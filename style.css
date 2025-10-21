@@ -443,6 +443,36 @@ button, input, textarea { font-family: inherit; }
   border-radius: 20px; padding: 6px 14px; font-weight: 600; cursor: pointer;
 }
 
+.menu-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  padding: 12px 16px;
+  z-index: 9999; /* current value */
+  display: none;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.menu-popup.show {
+  display: block;
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+html, body {
+  overscroll-behavior-y: contain;
+}
+
 /* ===== Slide Cart ===== */
 .cart-drawer {
   position: fixed;
