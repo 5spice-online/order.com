@@ -622,33 +622,45 @@ window.addEventListener("popstate", () => {
   if (cartDrawer.classList.contains("open")) {
     closeCart();
   }
-// ===== Floating Menu Button =====
+}); // 👈 close this function here
+
+// ===== Floating Menu Button (Fixed Version) =====
 const menuBtn = document.getElementById("menu-btn");
 const popup = document.getElementById("menu-popup");
 const popupList = document.getElementById("popup-list");
 const closePopup = document.getElementById("close-popup");
 
 if (menuBtn && popup && popupList && closePopup) {
-  // Create category buttons dynamically
-  products.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.textContent = cat.name;
-    btn.addEventListener("click", () => {
-      scrollToCategory(cat.name.toLowerCase().replace(/\s+/g, "-"));
-      popup.classList.remove("show");
+  // Wait until products are loaded
+  window.addEventListener("load", () => {
+    if (!Array.isArray(products) || products.length === 0) {
+      console.warn("⚠️ Products not loaded yet for menu popup.");
+      return;
+    }
+
+    // Build category buttons dynamically
+    popupList.innerHTML = "";
+    products.forEach((cat) => {
+      const btn = document.createElement("button");
+      btn.textContent = cat.name;
+      btn.addEventListener("click", () => {
+        scrollToCategory(cat.name.toLowerCase().replace(/\s+/g, "-"));
+        popup.classList.remove("show");
+      });
+      popupList.appendChild(btn);
     });
-    popupList.appendChild(btn);
   });
 
   // Toggle popup
   menuBtn.addEventListener("click", () => {
     popup.classList.toggle("show");
   });
+
   closePopup.addEventListener("click", () => {
     popup.classList.remove("show");
   });
 
-  // Adjust button when cart bar appears
+  // Move button above cart bar when visible
   const cartBar = document.getElementById("cart-bar");
   const observer = new MutationObserver(() => {
     if (cartBar && cartBar.style.display !== "none") {
@@ -661,7 +673,8 @@ if (menuBtn && popup && popupList && closePopup) {
     observer.observe(cartBar, { attributes: true, attributeFilter: ["style"] });
   }
 }
-});
+
+console.log("🍴 Floating Menu Button Ready ✅");
 
 
 
