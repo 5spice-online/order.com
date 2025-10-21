@@ -6,6 +6,6 @@
   "gstRate": 5,
   "address": "Shop 12, New Comet Tower, Mira Road",
   "splashEnabled": true,
-  "splashDurationMs": 7000,
+  "splashDurationMs": 5000,
   "tagline": "Where Every Toss Sparks a Taste."
 }
