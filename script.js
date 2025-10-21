@@ -562,11 +562,19 @@ const cartBar = document.querySelector("#cart-bar");            // bottom bar
 function openCart() {
   cartDrawer.removeAttribute("hidden");
   cartDrawer.classList.add("open");
+
+  // ✅ Push a fake cart state so back button knows cart is open
+  history.pushState({ view: "cart" }, "");
 }
 
 function closeCart() {
   cartDrawer.classList.remove("open");
   setTimeout(() => cartDrawer.setAttribute("hidden", ""), 300);
+
+  // ✅ When closing cart, remove the fake state (go back)
+  if (history.state && history.state.view === "cart") {
+    history.back();
+  }
 }
 
 if (cartButton && cartDrawer && cartClose) {
@@ -606,6 +614,13 @@ window.addEventListener("DOMContentLoaded", () => {
   if (cartCount && cart.length === 0) {
     cartCount.textContent = "";
     cartCount.style.display = "none";
+  }
+});
+
+// ✅ Handle mobile back button to close cart (instead of exiting)
+window.addEventListener("popstate", () => {
+  if (cartDrawer.classList.contains("open")) {
+    closeCart();
   }
 });
 
