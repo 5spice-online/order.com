@@ -755,6 +755,72 @@ textarea:focus, input:focus { outline: none; border-color: var(--orange); }
   }
 }
 
+/* ===== Floating Menu Button ===== */
+.menu-btn {
+  position: fixed;
+  bottom: 80px; /* space above cart bar */
+  right: 20px;
+  background: var(--orange);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  z-index: 200;
+  cursor: pointer;
+  transition: transform 0.3s ease, bottom 0.3s ease;
+}
+
+/* Moves up when cart bar is visible */
+.menu-btn.move-up {
+  bottom: 140px; /* lifts above cart bar */
+}
+
+/* ===== Category Popup ===== */
+.menu-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  padding: 12px 16px;
+  z-index: 300;
+  display: none;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.menu-popup.show { display: block; }
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.popup-list button {
+  width: 100%;
+  background: #f7f7f7;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 6px;
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+}
+.popup-list button:hover {
+  background: var(--orange);
+  color: #fff;
+}
+
+
 
 
 

@@ -622,6 +622,45 @@ window.addEventListener("popstate", () => {
   if (cartDrawer.classList.contains("open")) {
     closeCart();
   }
+// ===== Floating Menu Button =====
+const menuBtn = document.getElementById("menu-btn");
+const popup = document.getElementById("menu-popup");
+const popupList = document.getElementById("popup-list");
+const closePopup = document.getElementById("close-popup");
+
+if (menuBtn && popup && popupList && closePopup) {
+  // Create category buttons dynamically
+  products.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.textContent = cat.name;
+    btn.addEventListener("click", () => {
+      scrollToCategory(cat.name.toLowerCase().replace(/\s+/g, "-"));
+      popup.classList.remove("show");
+    });
+    popupList.appendChild(btn);
+  });
+
+  // Toggle popup
+  menuBtn.addEventListener("click", () => {
+    popup.classList.toggle("show");
+  });
+  closePopup.addEventListener("click", () => {
+    popup.classList.remove("show");
+  });
+
+  // Adjust button when cart bar appears
+  const cartBar = document.getElementById("cart-bar");
+  const observer = new MutationObserver(() => {
+    if (cartBar && cartBar.style.display !== "none") {
+      menuBtn.classList.add("move-up");
+    } else {
+      menuBtn.classList.remove("move-up");
+    }
+  });
+  if (cartBar) {
+    observer.observe(cartBar, { attributes: true, attributeFilter: ["style"] });
+  }
+}
 });
 
 
