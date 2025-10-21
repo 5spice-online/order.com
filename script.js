@@ -563,8 +563,10 @@ function openCart() {
   cartDrawer.removeAttribute("hidden");
   cartDrawer.classList.add("open");
 
-  // ✅ Push a fake cart state so back button knows cart is open
-  history.pushState({ view: "cart" }, "");
+  // 🔁 Push a fake history state when opening cart
+  if (!history.state || history.state.view !== "cart") {
+    history.pushState({ view: "cart" }, "", location.href);
+  }
 }
 
 function closeCart() {
@@ -672,6 +674,13 @@ if (menuBtn && popup && popupList && closePopup) {
 }
 
 console.log("🍴 Floating Menu Button (mobile-ready) active ✅");
+
+window.addEventListener("popstate", () => {
+  if (cartDrawer.classList.contains("open")) {
+    closeCart(); // ✅ Back button closes the cart instead of website
+  }
+});
+
 
 
 
