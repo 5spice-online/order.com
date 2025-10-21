@@ -807,50 +807,56 @@ textarea:focus, input:focus { outline: none; border-color: var(--orange); }
   bottom: 140px; /* lifts above cart bar */
 }
 
-/* ===== Category Popup ===== */
+/* ===== Category Popup (Right-Side Style) ===== */
 .menu-popup {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 16px;
+  right: 16px;
+  width: 65%;                    /* 👈 65% width, adjust 50–70% if you like */
   background: #fff;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
-  padding: 12px 16px;
-  z-index: 300;
-  display: none;
-  max-height: 60vh;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.2);
+  padding: 16px;
+  max-height: 70vh;
   overflow-y: auto;
-}
-.menu-popup.show { display: block; }
 
-.popup-header {
+  transform: translateY(20px) translateX(120%); /* start off-screen right */
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+
+  z-index: 9999 !important;
+}
+
+/* When opened */
+.menu-popup.show {
+  transform: translateY(0) translateX(0);
+  opacity: 1;
+}
+
+/* Popup header tidy */
+.menu-popup .popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.popup-list button {
+/* Category buttons */
+.popup-cat-btn {
+  display: block;
   width: 100%;
-  background: #f7f7f7;
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  margin-bottom: 6px;
   text-align: left;
-  font-weight: 500;
-  cursor: pointer;
+  padding: 10px 14px;
+  border: none;
+  background: #f7f7f7;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
 }
-.popup-list button:hover {
-  background: var(--orange);
-  color: #fff;
+.popup-cat-btn:hover {
+  background: #ffe8dc;
 }
-
-
 
 
 
