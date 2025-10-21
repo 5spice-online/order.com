@@ -624,58 +624,54 @@ window.addEventListener("popstate", () => {
   }
 }); // 👈 close this function here
 
-// ===== Floating Menu Button (Fixed Version) =====
+// ===== Floating Menu Button (Mobile-Ready Version) =====
 const menuBtn = document.getElementById("menu-btn");
 const popup = document.getElementById("menu-popup");
 const popupList = document.getElementById("popup-list");
 const closePopup = document.getElementById("close-popup");
 
+function buildCategoryButtons() {
+  popupList.innerHTML = "";
+  if (!Array.isArray(products) || products.length === 0) {
+    const msg = document.createElement("div");
+    msg.textContent = "Loading categories...";
+    msg.style.padding = "10px";
+    popupList.appendChild(msg);
+    return false;
+  }
+  products.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.textContent = cat.name;
+    btn.className = "popup-cat-btn";
+    btn.addEventListener("click", () => {
+      scrollToCategory(cat.name.toLowerCase().replace(/\s+/g, "-"));
+      popup.classList.remove("show");
+    });
+    popupList.appendChild(btn);
+  });
+  return true;
+}
+
 if (menuBtn && popup && popupList && closePopup) {
-  // Wait until products are loaded
-  window.addEventListener("load", () => {
+  menuBtn.addEventListener("click", async () => {
+    // Ensure products are loaded before showing categories
     if (!Array.isArray(products) || products.length === 0) {
-      console.warn("⚠️ Products not loaded yet for menu popup.");
-      return;
+      try {
+        const prodRes = await fetch("./products.json");
+        products = await prodRes.json();
+      } catch (err) {
+        console.error("Failed to reload products:", err);
+      }
     }
 
-    // Build category buttons dynamically
-    popupList.innerHTML = "";
-    products.forEach((cat) => {
-      const btn = document.createElement("button");
-      btn.textContent = cat.name;
-      btn.addEventListener("click", () => {
-        scrollToCategory(cat.name.toLowerCase().replace(/\s+/g, "-"));
-        popup.classList.remove("show");
-      });
-      popupList.appendChild(btn);
-    });
-  });
-
-  // Toggle popup
-  menuBtn.addEventListener("click", () => {
+    buildCategoryButtons();
     popup.classList.toggle("show");
   });
 
-  closePopup.addEventListener("click", () => {
-    popup.classList.remove("show");
-  });
-
-  // Move button above cart bar when visible
-  const cartBar = document.getElementById("cart-bar");
-  const observer = new MutationObserver(() => {
-    if (cartBar && cartBar.style.display !== "none") {
-      menuBtn.classList.add("move-up");
-    } else {
-      menuBtn.classList.remove("move-up");
-    }
-  });
-  if (cartBar) {
-    observer.observe(cartBar, { attributes: true, attributeFilter: ["style"] });
-  }
+  closePopup.addEventListener("click", () => popup.classList.remove("show"));
 }
 
-console.log("🍴 Floating Menu Button Ready ✅");
-
+console.log("🍴 Floating Menu Button (mobile-ready) active ✅");
 
 
 
