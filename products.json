@@ -1977,15 +1977,53 @@
         }
       ]
     },
-    {
-      "name": "Desserts",
-      "categoryDiscount": 0,
-      "items": []
-    },
-    {
-      "name": "Beverages",
-      "categoryDiscount": 0,
-      "items": []
-    }
-  ]
+      {
+    "name": "Desserts",
+    "categoryDiscount": 0,
+    "items": [
+      {
+        "id": 301,
+        "name": "Chocolate Lava Cake",
+        "price": 199,
+        "veg": true,
+        "available": true,
+        "desc": "Warm molten chocolate cake with a gooey center.",
+        "image": "chocolate-lava-cake.jpg"
+      },
+      {
+        "id": 302,
+        "name": "Honey Noodles with Ice Cream",
+        "price": 229,
+        "veg": true,
+        "available": true,
+        "desc": "Crispy honey noodles served with vanilla ice cream.",
+        "image": "honey-noodles-icecream.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Beverages",
+    "categoryDiscount": 0,
+    "items": [
+      {
+        "id": 401,
+        "name": "Fresh Lime Soda",
+        "price": 129,
+        "veg": true,
+        "available": true,
+        "desc": "Refreshing soda with lemon and a hint of mint.",
+        "image": "fresh-lime-soda.jpg"
+      },
+      {
+        "id": 402,
+        "name": "Cold Coffee",
+        "price": 159,
+        "veg": true,
+        "available": true,
+        "desc": "Chilled coffee blended with milk and ice cream.",
+        "image": "cold-coffee.jpg"
+      }
+    ]
+  }
+]
 }
