@@ -1,0 +1,307 @@
+<!DOCTYPE html>                                                                                   <html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>5Spice Mira Road – Authentic Indo-Chinese</title>
+  <meta name="description" content="Authentic wok-tossed flavours made fresh at 5Spice Mira Road." />
+  <link rel="icon" href="./images/logo.png" />
+  <link rel="preload" as="image" href="./images/hero.jpg" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- Splash Screen -->
+<div id="splash" class="splash" aria-live="polite">
+  <div class="splash-inner">
+    <img src="./images/logo.png" alt="5Spice Logo" class="splash-logo" />
+    <p id="splash-tagline" class="splash-tagline">Where Every Toss Sparks a Taste.</p>
+  </div>
+  
+  <!-- Cinematic Floating Outlet Names -->
+<div class="splash-outlet-random">
+  <span style="top:8%; left:10%;">Colaba</span>
+  <span style="top:10%; right:12%;">Mira Road</span>
+  <span style="top:20%; left:60%;">Worli</span>
+  <span style="top:25%; left:25%;">Bandra</span>
+  <span style="top:35%; right:15%;">Borivali</span>
+
+  <span style="top:45%; left:8%;">Saki Naka</span>
+  <span style="top:50%; right:14%;">Powai</span>     <!-- moved a bit left -->
+  <span style="top:44%; right:10%;">Chembur</span>   <!-- shifted slightly up and more inward -->
+  <span style="top:60%; right:25%;">Oshiwara</span>
+
+  <span style="bottom:28%; left:15%;">Belapur</span>
+  <span style="bottom:25%; right:18%;">Thane</span>
+  <span style="bottom:18%; left:40%;">Mulund</span>
+  <span style="bottom:10%; right:25%;">Wadala</span> <!-- moved right for spacing -->
+  <span style="bottom:8%; left:30%;">Malad</span>
+</div>
+  <div class="splash-bg"></div>
+</div>
+
+  <!-- Header -->
+  <header id="header" class="header" role="banner">
+    <div class="header-wrap">
+      <div class="header-left">
+        <img src="./images/logo.png" alt="5Spice" class="logo" />
+        <div class="brand">
+          <span class="brand-title"></span>
+          <span class="brand-outlet">MIRA ROAD</span>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <span id="outlet-status" class="status-badge" aria-live="polite">●</span>
+        <span id="outlet-status-text" class="status-text">Loading…</span>
+      </div>
+
+      <div class="header-right">
+        <button id="cart-button" class="cart-btn" aria-label="Open cart" aria-haspopup="dialog" aria-controls="cart-drawer">
+          <span class="cart-icon">🛒</span>
+          <span id="cart-count" class="cart-count" aria-live="polite"></span>
+
+        </button>
+      </div>
+    </div>
+
+    <!--
+<div id="table-chip" class="table-chip" hidden>
+  <span class="chip-dot">🪑</span>
+  <span id="table-chip-text">Serving: Table 7</span>
+</div>
+-->
+
+  <!-- Hero -->
+  <section id="hero" class="hero" role="img" aria-label="Flaming wok with noodles">
+    <img src="./images/hero.jpg" alt="" class="hero-img" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Authentic Wok-Tossed Flavours,<br />Made Fresh</h1>
+      <p class="hero-subtitle">Crafted in Our Kitchens</p>
+    </div>
+  </section>
+
+  <main id="main" class="main" role="main">
+
+    <!-- Sticky Category Bar -->
+    <nav id="category-bar" class="category-bar" aria-label="Menu categories">
+      <div class="category-scroll">
+        <button class="cat-tab is-active" data-cat="all" aria-current="true">All</button>
+        <!-- script.js will auto-generate remaining tabs from products.json
+             Example order expected by spec:
+             Single Serve, Buy1Get1, Soups (Veg/Chicken), Starters (Veg/Paneer/Chicken/Fish),
+             Noodles (Veg/Chicken), Rice (Veg/Chicken),
+             Main Course Gravy (Veg/Chicken/Fish), Desserts, Beverages -->
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-wrap">
+        <div class="search-field">
+          <span class="search-icon">🔍</span>
+          <input id="search-input" type="search" inputmode="search" placeholder="Search dishes… 🍜" autocomplete="off" aria-label="Search dishes" />
+          <button id="search-clear" class="search-clear" aria-label="Clear search" hidden>✖</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Category Boxes -->
+    <section id="menu-sections" class="menu-sections">
+      <!-- script.js will render category cards and item cards here using products.json
+        Category box structure (example):
+        <div class="category-box" id="cat-veg-starters">
+          <div class="category-head">
+            <h2 class="category-title">VEG STARTERS</h2>
+            <span class="category-badge">🔶 10% OFF</span> <!-- optional -->
+          </div>
+          <div class="items-grid">
+            <!-- Item Cards inserted here -->
+          </div>
+        </div>
+      -->
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="item-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close" data-close-modal>✖</button>
+      <div class="modal-media">
+        <img id="modal-img" src="" alt="" />
+      </div>
+      <div class="modal-body">
+        <h3 id="modal-title" class="modal-title">Item Name</h3>
+        <p id="modal-price" class="modal-price">₹0</p>
+        <p id="modal-desc" class="modal-desc">Short description.</p>
+
+        <div class="modal-qty">
+          <button id="modal-dec" class="qty-btn" aria-label="Decrease quantity">–</button>
+          <input id="modal-qty" type="text" inputmode="numeric" value="1" aria-live="polite" aria-label="Quantity" />
+          <button id="modal-inc" class="qty-btn" aria-label="Increase quantity">+</button>
+        </div>
+
+        <button id="modal-add" class="btn-primary">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide Cart -->
+<aside id="cart-drawer" class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" hidden>
+  <div class="cart-header">
+    <h2 id="cart-title">Your Order</h2>
+    <button id="cart-close" class="cart-close" aria-label="Close cart">✖</button>
+  </div>
+
+  <!-- ✅ Wrapper added below for scrollable content -->
+  <div class="cart-body">
+
+    <!-- Cart Items -->
+    <div id="cart-items" class="cart-items" aria-live="polite">
+      <!-- script.js will inject item rows like:
+        <div class="cart-row">
+          <span class="cart-dot">🟢</span>
+          <span class="cart-name">Veg Sweet Corn Soup</span>
+          <div class="cart-qty">
+            <button class="qty-btn" data-action="dec" data-id="1">–</button>
+            <span class="qty-val">2</span>
+            <button class="qty-btn" data-action="inc" data-id="1">+</button>
+          </div>
+          <span class="cart-price">₹240</span>
+        </div>
+      -->
+    </div>
+
+   <!-- Discount & GST Calculation -->
+<div class="cart-summary">
+  <!-- Subtotal -->
+  <div class="sum-line">
+    <span>Subtotal</span>
+    <span id="sum-subtotal">₹0</span>
+  </div>
+
+  <!-- Always-visible Discount line -->
+  <div class="sum-line small" id="sum-discount-line">
+    <span>Discount</span>
+    <span id="sum-discount-value">– ₹0</span>
+  </div>
+
+  <!-- Category / dynamic discounts (auto-inserted by script.js if any) -->
+  <div id="sum-discounts" class="sum-discounts"></div>
+
+  <!-- GST -->
+  <div class="sum-line">
+    <span>+ GST (<span id="gst-rate">0</span>%)</span>
+    <span id="sum-gst">₹0</span>
+  </div>
+
+  <!-- Grand Total -->
+  <div class="sum-total">
+    <span>Grand Total</span>
+    <span id="sum-grand">₹0</span>
+  </div>
+
+  <!-- Note -->
+  <div class="sum-line small" style="font-size: 0.8rem; color: #666;">
+    (Includes GST added after discount)
+  </div>
+
+  <!-- Total Items -->
+  <div class="sum-meta">
+    <span>Total Items</span>
+    <span id="sum-items">0</span>
+  </div>
+</div>
+
+    <!-- Customer Inputs -->
+    <form id="checkout-form" class="checkout" novalidate>
+      <label class="input-label" for="input-notes">Notes (optional)</label>
+      <textarea id="input-notes" rows="2" placeholder="Less spicy, extra sauce…"></textarea>
+
+      <div class="form-row">
+        <div class="form-col">
+          <label class="input-label" for="input-name">Name</label>
+          <input id="input-name" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form-col">
+          <label class="input-label" for="input-phone">Phone</label>
+          <input id="input-phone" type="tel" inputmode="tel" placeholder="10-digit mobile" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-col full">
+          <label class="input-label" for="input-address">Table No / Address</label>
+          <input id="input-address" type="text" placeholder="Table 7 or full address" required />
+        </div>
+      </div>
+
+      <div class="checkout-actions">
+        <button id="btn-clear-cart" type="button" class="btn-ghost">Clear Cart</button>
+        <button id="btn-whatsapp" type="submit" class="btn-primary">Place Order via WhatsApp</button>
+      </div>
+    </form>
+
+  </div> <!-- ✅ END of .cart-body wrapper -->
+</aside>
+
+<!-- Persistent Bottom “Cart Summary Bar” -->
+<div id="cart-bar" class="cart-bar" role="region" aria-live="polite" hidden>
+  <div class="cart-bar-content">
+    <span class="cart-bar-icon">🛒</span>
+    <span id="cart-bar-text">0 items added (₹0)</span>
+    <button id="cart-bar-view" class="btn-light">View Cart</button>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-wrap">
+      <div class="footer-block">
+        <div class="footer-line"><strong>📞</strong> <a href="tel:+919867378209">+91 9867378209</a></div>
+        <div class="footer-line"><strong>📍</strong> Shop 12, New Comet Tower, Mira Road</div>
+        <div class="footer-line"><strong>🕒</strong> 12 PM – 3:30 PM • 7 PM – 12 AM</div>
+      </div>
+      <div class="footer-block">
+        <div class="footer-copy">© 2025 5Spice</div>
+        <div class="footer-admin"><a href="./admin/admin.html" rel="nofollow">Admin</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toasts -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <!-- Scripts -->
+  <script src="./script.js" defer></script>
+
+  <!-- Comment Labels Reference:
+    // Splash Screen
+    // Header
+    // Hero
+    // Sticky Category Bar
+    // Category Boxes
+    // Menu Card
+    // Modal
+    // Slide Cart
+    // Discount & GST Calculation
+    // WhatsApp Order
+    // Footer
+    // Admin Dashboard (Outlet / Category / Item / Price)
+  -->
+
+  <!-- ===== Floating Menu Button ===== -->
+<button id="menu-btn" class="menu-btn">🍴 Menu</button>
+
+<!-- ===== Category Popup ===== -->
+<div id="menu-popup" class="menu-popup">
+  <div class="popup-header">
+    <span>Select Category</span>
+    <button id="close-popup">✕</button>
+  </div>
+  <div class="popup-list" id="popup-list">
+    <!-- JS will insert category buttons here -->
+  </div>
+</div>
+</body>
+</html>
