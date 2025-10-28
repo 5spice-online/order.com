@@ -1,0 +1,290 @@
+/* =========================================
+   5SPICE MIRA ROAD - admin.css
+   ========================================= */
+
+/* ===== Reset ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background: #fafafa;
+  color: #171717;
+  line-height: 1.5;
+}
+
+/* ===== Login Screen ===== */
+.login-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #F15A24, #FF6E3E);
+  color: #fff;
+}
+.login-card {
+  background: #fff;
+  color: #171717;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+}
+.login-logo {
+  width: 70px;
+  margin: 0 auto 10px;
+}
+.login-card h2 {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 16px;
+}
+#admin-pin {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+#login-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #F15A24, #FF6E3E);
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+#login-error {
+  margin-top: 8px;
+  color: #d62828;
+  font-size: 0.9rem;
+}
+
+/* ===== Dashboard ===== */
+.dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.hidden { display: none !important; }
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  margin-bottom: 20px;
+}
+.admin-header h1 {
+  font-size: 1.2rem;
+  color: #F15A24;
+  font-weight: 700;
+}
+.btn-ghost {
+  background: none;
+  border: 1px solid #F15A24;
+  color: #F15A24;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+.btn-ghost:hover { background: #F15A24; color: #fff; }
+
+/* ===== Sections ===== */
+.admin-section {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+}
+.admin-section h2 {
+  color: #F15A24;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ===== Outlet Toggle ===== */
+.control-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 24px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  border-radius: 24px;
+  transition: .3s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+input:checked + .slider {
+  background-color: #14b814;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+#outlet-status-text {
+  font-weight: 600;
+  color: #171717;
+}
+
+/* ===== Tables ===== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.admin-table th, .admin-table td {
+  border-bottom: 1px solid #eee;
+  padding: 8px;
+  text-align: left;
+}
+.admin-table th {
+  background: #f4f4f4;
+  color: #333;
+  font-weight: 600;
+}
+.admin-table td input {
+  width: 80px;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+.admin-table td button {
+  background: linear-gradient(135deg, #F15A24, #FF6E3E);
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ===== Item Accordion ===== */
+#item-container .category-block {
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.category-header {
+  background: #f8f8f8;
+  padding: 10px;
+  font-weight: 600;
+  color: #F15A24;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.category-items {
+  display: none;
+  background: #fff;
+}
+.category-items.open { display: block; }
+.item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+}
+.item-row input[type="number"] {
+  width: 70px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 3px;
+}
+.item-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.item-row input[type="checkbox"] {
+  transform: scale(1.1);
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, #F15A24, #FF6E3E);
+  border: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+.btn-primary:hover {
+  background: #F15A24;
+}
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* ===== Messages & Toast ===== */
+.save-msg {
+  margin-top: 8px;
+  color: #14b814;
+  font-size: 0.9rem;
+}
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #171717;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  font-size: 0.9rem;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.toast.show { opacity: 1; }
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .admin-header h1 { font-size: 1rem; }
+  .admin-section { padding: 12px; }
+  .admin-table th, .admin-table td { font-size: 0.8rem; }
+}
