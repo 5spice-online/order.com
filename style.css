@@ -473,6 +473,13 @@ html, body {
   overscroll-behavior-y: contain;
 }
 
+.category-badge {
+  color: #ff6b00;
+  font-weight: 600;
+  font-size: 0.9em;
+  margin-left: 6px;
+}
+
 /* ===== Slide Cart ===== */
 .cart-drawer {
   position: fixed;
