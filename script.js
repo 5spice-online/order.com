@@ -173,14 +173,14 @@ function renderMenu() {
     const title = document.createElement("h2");
     title.className = "category-title";
     title.textContent = cat.name;
-    head.appendChild(title);
-
     if (cat.categoryDiscount > 0) {
-      const badge = document.createElement("span");
-      badge.className = "category-badge";
-      badge.textContent = `🔶 ${cat.categoryDiscount}% OFF`;
-      head.appendChild(badge);
-    }
+  const badge = document.createElement("span");
+  badge.className = "category-badge";
+  badge.innerHTML = `(${cat.categoryDiscount}% OFF)`;
+  title.appendChild(badge);
+}
+
+    head.appendChild(title);
 
     box.appendChild(head);
 
@@ -541,7 +541,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // ✅ After redirect, clear cart completely and refresh menu
     localStorage.removeItem("cart");
     cart = [];
-    renderCart();
+    
+    Cart();
     updateCartBar();
     refreshMenuQtyDirect(); // ✅ fix menu counters
     showToast("✅ Order sent. Cart cleared.");
