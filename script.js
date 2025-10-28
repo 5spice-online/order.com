@@ -400,10 +400,6 @@ function calcTotals() {
     }
   });
 
-  // ===== Trial Global Discount (for testing only) =====
-  const TEMP_DISCOUNT_RATE = 0.20; // 20% trial discount
-  discount += subtotal * TEMP_DISCOUNT_RATE;
-
   // ===== Update visible discount line =====
   $("#sum-discount-value").textContent =
     discount > 0 ? `– ${fmt(discount)}` : "– ₹0";
