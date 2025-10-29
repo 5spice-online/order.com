@@ -265,19 +265,6 @@ add.append(dec, count, inc);
   });
 }
 
-// ===== Outlet Open/Close Check =====
-if (!config.outletOpen) {
-  const overlay = document.createElement("div");
-  overlay.className = "closed-overlay";
-  overlay.innerHTML = `
-     <div class="closed-box">
-    <h2>⚠️ We're Currently Closed</h2>
-    <p>Open again soon — thank you for your support!</p>
-    <button class="refresh-btn" onclick="location.reload()">🔁 Refresh</button>
-  </div>`;
-  document.body.appendChild(overlay);
-}
-
 // ===== Modal =====
 function openModal(item, categoryName) {
   const modal = $("#item-modal");
@@ -690,6 +677,36 @@ window.addEventListener("popstate", () => {
     closeCart(); // ✅ Back button closes the cart instead of website
   }
 });
+
+// ===== Automatic Open/Close Timetable =====
+function updateOutletStatus() {
+  const now = new Date();
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const statusEl = document.getElementById("open-status");
+
+  // Convert to decimal time (e.g., 11:30 = 11.5)
+  const currentTime = hours + minutes / 60;
+
+  const isOpen =
+    (currentTime >= 11 && currentTime <= 15.5) || // 11:00 AM – 3:30 PM
+    (currentTime >= 18 && currentTime <= 24);     // 6:00 PM – 12:00 AM
+
+  if (isOpen) {
+    statusEl.textContent = "🟢 Open Now";
+    statusEl.classList.add("open");
+    statusEl.classList.remove("closed");
+  } else {
+    statusEl.textContent = "🔴 Closed – Opens at 11 AM";
+    statusEl.classList.add("closed");
+    statusEl.classList.remove("open");
+  }
+}
+
+// Run immediately + every minute
+updateOutletStatus();
+setInterval(updateOutletStatus, 60000);
+
 
 
 
