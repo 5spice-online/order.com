@@ -265,6 +265,19 @@ add.append(dec, count, inc);
   });
 }
 
+// ===== Outlet Open/Close Check =====
+if (!config.outletOpen) {
+  const overlay = document.createElement("div");
+  overlay.className = "closed-overlay";
+  overlay.innerHTML = `
+     <div class="closed-box">
+    <h2>⚠️ We're Currently Closed</h2>
+    <p>Open again soon — thank you for your support!</p>
+    <button class="refresh-btn" onclick="location.reload()">🔁 Refresh</button>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+
 // ===== Modal =====
 function openModal(item, categoryName) {
   const modal = $("#item-modal");
