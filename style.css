@@ -865,25 +865,6 @@ textarea:focus, input:focus { outline: none; border-color: var(--orange); }
   background: #ffe8dc;
 }
 
-/* ===== Open/Close Time Badge ===== */
-.open-status {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-left: 10px;
-  padding: 4px 10px;
-  border-radius: 12px;
-  color: #fff;
-  background: #666;
-  transition: background 0.3s ease;
-}
-
-.open-status.open {
-  background: #00c853; /* green */
-}
-
-.open-status.closed {
-  background: #d32f2f; /* red */
-}
 
 
 
